@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>CITY PETS CLINIC | Peshawar | Elite Veterinary Care</title>
+    <meta property="og:title" content="CITY PETS CLINIC | Peshawar | Elite Veterinary Care" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://citypets.pk" />
+    <meta property="og:image" content="image_4.png" />
+    <meta property="og:description" content="Prestigious veterinary established at Nasir Bagh Road. Advanced diagnostics and specialized surgery in a refined setting." />
+    <meta property="og:site_name" content="City Pets Clinic" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+      <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      .reveal-text {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal-text.visible { opacity: 1; transform: translateY(0); }
+
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-60px);
+        transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+      .nav-black {
+        background: #000;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-link {
+        color: #fff;
+        font-size: 9.5px;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero-container {
+        position: relative;
+        width: 100%;
+        height: 75vh; 
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      @media (max-width: 767px) { .hero-container { height: 65vh; } }
+
+      #bg-image {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(0.6);
+      }
+
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.7) 100%);
+        z-index: 2;
+      }
+
+      .hero-content { position: relative; z-index: 10; text-align: center; }
+
+      .split-char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .split-char.visible { opacity: 1; transform: translateY(0); }
+
+      .ride-text { animation: rideMotion 9s ease-in-out infinite; }
+      @keyframes rideMotion {
+        0%, 100% { transform: translateY(0px) rotate(-0.5deg); }
+        50% { transform: translateY(-10px) rotate(0.5deg); }
+      }
+
+      .btn-main {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        transition: 0.4s;
+      }
+      .btn-main:hover { background: #fff; color: #000; }
+
+      .ceo-info-card {
+        background: rgba(0,0,0,0.3);
+        backdrop-filter: blur(12px);
+        border-left: 3px solid rgba(255,255,255,0.4);
+      }
+
+      .elegant-bracket {
+        display: inline-block;
+        position: relative;
+        padding: 15px 30px;
+        color: #78716c;
+        font-family: serif;
+        font-style: italic;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        line-height: 1.6;
+      }
+      .elegant-bracket::before, .elegant-bracket::after {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0;
+        width: 15px;
+        border: 1px solid #d6d3d1;
+      }
+      .elegant-bracket::before { left: 0; border-right: none; }
+      .elegant-bracket::after { right: 0; border-left: none; }
+
+      @media (max-width: 640px) {
+        .elegant-bracket { font-size: 9px; padding: 10px 20px; }
+        .ceo-info-card { padding: 12px !important; max-width: 170px !important; }
+        .ceo-info-card h2 { font-size: 11px !important; }
+        .ceo-info-card p, .ceo-info-card a { font-size: 8px !important; line-height: 1.3 !important; }
+      }
+
+      .clock {
+        width: 160px; height: 160px;
+        border: 7px solid #000;
+        border-radius: 50%;
+        background: #fff;
+        position: relative;
+      }
+      .hand { position: absolute; left: 50%; bottom: 50%; transform-origin: bottom center; }
+      .hour-hand { width: 5px; height: 38px; background: #000; }
+      .minute-hand { width: 3px; height: 58px; background: #333; }
+      .second-hand { width: 2px; height: 68px; background: #d97706; }
+
+      .service-card {
+        border: 1px solid #f1f1f1;
+        border-radius: 16px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 1s;
+      }
+      .service-card.visible { opacity: 1; transform: translateY(0); }
+
+      .globe-wrapper {
+        width: 240px; height: 240px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 8px solid #111;
+      }
+    </style>
+    </head>
+    <body class="bg-white font-sans text-black antialiased overflow-x-hidden">
+      <nav class="nav-black">
+        <div class="max-w-6xl mx-auto w-full px-6 flex justify-between items-center">
+          <div class="flex gap-6">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#location" class="nav-link">Location</a>
+          </div>
+          <a href="#developer" class="nav-link border border-white/30 px-3 py-1 rounded text-[8px]">DEVELOPER</a>
+        </div>
+      </nav>
+      <header id="home" class="hero-container relative">
+        <img src="https://i.pinimg.com/736x/4b/f9/16/4bf9160bf6a63f22518bde065f0dd426.jpg" alt="City Pets Clinic background" id="bg-image">
+          <div class="video-overlay">
+          </div>
+          <img src="image_4.png" alt="City Pets Clinic prestige card" class="hidden xl:block absolute top-10 right-10 w-96 h-auto z-20 rounded-xl shadow-2xl border-2 border-white/20">
+            <div class="hero-content px-4">
+              <h1 id="main-title" class="text-3xl md:text-7xl font-black uppercase tracking-tighter mb-3 text-white ride-text">
+              </h1>
+              <p id="subtitle" class="reveal-text text-[9px] md:text-sm font-bold uppercase tracking-[4px] text-white/90 mb-10 ride-text">
+                ELITE VETERINARY CARE • PESHAWAR
+              </p>
+              <a href="https://wa.me/923449833071" target="_blank" class="btn-main px-8 py-4 rounded-full text-xs inline-flex items-center gap-2">
+                <i class="fa-solid fa-calendar-check text-amber-400">
+                </i> BOOK NOW
+              </a>
+            </div>
+          </header>
+          <section id="ceo-banner" class="w-full bg-black relative">
+            <div class="w-full relative leading-[0]">
+              <img src="https://i.ibb.co/B5XQQDVS/In-Shot-20260402-200150468.jpg" alt="CEO" class="w-full h-auto block grayscale brightness-[0.9]">
+                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 flex flex-col items-start leading-normal">
+                  <div class="reveal-left ceo-info-card p-4 md:p-6 text-white max-w-[210px] md:max-w-md text-left">
+                    <h2 class="text-xs md:text-lg font-black uppercase mb-0.5">Dr. Imad Khan</h2>
+                    <p class="univ-heading text-amber-400 text-[8px] md:text-[11px] font-black uppercase mb-1 tracking-wider border-b border-amber-400/20 pb-1">Abdul Wali Khan University Mardan Pakistan</p>
+                    <p class="text-white/80 text-[7px] md:text-[9px] font-bold uppercase mb-3 tracking-widest">DVM, M.Phil, PhD (Anatomy & Histology)</p>
+                    <div class="space-y-2 text-[7px] md:text-[9px] opacity-90 uppercase font-bold tracking-tight">
+                      <div class="border-b border-white/20 pb-1">
+                        <p class="text-[6px] md:text-[8px] text-white/50 mb-0.5">POSITION</p>
+                        <p>HOD, Basic Veterinary Sciences</p>
+                        <p class="opacity-70">College of Vet Sciences & AH</p>
+                      </div>
+                      <div class="pt-2 grid grid-cols-1 gap-1">
+                        <a href="tel:03449833071" class="hover:text-amber-400">
+                          <i class="fa-solid fa-phone mr-1">
+                          </i> 0344-9833071</a>
+                          <a href="mailto:imadkhan@awkum.edu.pk" class="hover:text-amber-400 lowercase">
+                            <i class="fa-solid fa-envelope mr-1">
+                            </i> imadkhan@awkum.edu.pk</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section id="services" class="py-20 bg-white">
+                  <div class="max-w-6xl mx-auto px-6">
+                    <div class="mb-12 text-center">
+                      <h2 class="reveal-text text-4xl font-black uppercase">Services</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      <div class="service-card p-8 text-center">
+                        <i class="fa-solid fa-scissors text-2xl mb-4">
+                        </i>
+                        <h3 class="text-xs font-black uppercase mb-4 tracking-widest">Grooming</h3>
+                        <ul class="text-[10px] text-stone-500 font-bold space-y-2 uppercase">
+                          <li>Nail Trimming</li>
+                          <li>Full Body Clip</li>
+                          <li>Dental Scaling</li>
+                        </ul>
+                      </div>
+                      <div class="service-card p-8 text-center">
+                        <i class="fa-solid fa-stethoscope text-2xl mb-4">
+                        </i>
+                        <h3 class="text-xs font-black uppercase mb-4 tracking-widest">Medical</h3>
+                        <ul class="text-[10px] text-stone-500 font-bold space-y-2 uppercase">
+                          <li>Vaccination</li>
+                          <li>Consultation</li>
+                          <li>Lab Tests</li>
+                        </ul>
+                      </div>
+                      <div class="service-card p-8 text-center">
+                        <i class="fa-solid fa-briefcase-medical text-2xl mb-4">
+                        </i>
+                        <h3 class="text-xs font-black uppercase mb-4 tracking-widest">Surgery</h3>
+                        <ul class="text-[10px] text-stone-500 font-bold space-y-2 uppercase">
+                          <li>Major/Minor</li>
+                          <li>Orthopedic</li>
+                          <li>Emergency</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="py-16 bg-stone-50">
+                  <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+                    <div class="flex justify-center reveal-text">
+                      <div class="clock">
+                        <div class="hand hour-hand" id="hour">
+                        </div>
+                        <div class="hand minute-hand" id="minute">
+                        </div>
+                        <div class="hand second-hand" id="second">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center md:text-left reveal-text">
+                      <h2 class="text-lg font-black uppercase mb-4 border-l-2 border-black pl-3">Hours</h2>
+                      <div class="text-[10px] font-bold uppercase space-y-2 opacity-60">
+                        <p>Mon – Sun: 10 AM – 10 PM</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section id="location" class="py-24 bg-white">
+                  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left reveal-text">
+                      <h2 class="text-4xl md:text-6xl font-black uppercase mb-8 tracking-tighter">Location.</h2>
+                      <div class="mb-10">
+                        <div class="elegant-bracket">
+                          2CMR+63H, Regi Model Town Road,<br>
+                          Nasir Bagh, Peshawar
+                        </div>
+                      </div>
+                      <a href="https://maps.app.goo.gl/UAPPN7LGysGfjxX49" target="_blank" class="btn-main px-10 py-4 rounded text-[10px] inline-block shadow-xl">
+                        Locate Clinic
+                      </a>
+                    </div>
+                    <div class="flex justify-center reveal-text">
+                      <div class="globe-wrapper shadow-2xl">
+                        <img src="https://media.giphy.com/media/PbGFUKs3queMhulFgO/giphy.gif" alt="Globe" class="w-full h-full object-cover grayscale opacity-80">
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <div id="developer" class="w-full">
+                    <a href="https://www.instagram.com/dr_fahrenheit/" target="_blank">
+                      <img src="https://i.ibb.co/MktgFh0H/In-Shot-20260402-194359126.jpg" alt="Dev" class="w-full h-auto block">
+                      </a>
+                    </div>
+                    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+
+      function splitText() {
+        const title = document.getElementById('main-title');
+        const text = "CITY PETS CLINIC"; 
+        title.innerHTML = '';
+        text.split('').forEach((char, i) => {
+          const span = document.createElement('span');
+          span.className = 'split-char';
+          span.style.transitionDelay = `${i * 40}ms`;
+          span.textContent = char === ' ' ? '\u00A0' : char;
+          title.appendChild(span);
+        });
+      }
+
+      window.addEventListener('load', () => {
+        splitText();
+        document.querySelectorAll('.reveal-text, .service-card, .reveal-left, .ceo-info-card').forEach(el => observer.observe(el));
+        setTimeout(() => {
+          document.querySelectorAll('.split-char').forEach(s => s.classList.add('visible'));
+        }, 300);
+      });
+
+      function setClock() {
+        const now = new Date();
+        document.getElementById('second').style.transform = `translateX(-50%) rotate(${now.getSeconds() * 6}deg)`;
+        document.getElementById('minute').style.transform = `translateX(-50%) rotate(${now.getMinutes() * 6}deg)`;
+        document.getElementById('hour').style.transform = `translateX(-50%) rotate(${(now.getHours() % 12) * 30 + now.getMinutes() * 0.5}deg)`;
+      }
+      setInterval(setClock, 1000); setClock();
+    </script>
+                  </body>
+                </html>
