@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AUTO CHOICE Motor Bargain | Peshawar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+
+        /* SLOW & CALM APPEAR UP EFFECT */
+        .calm-appear-up {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: all 1450ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .calm-appear-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 250ms; }
+        .delay-300 { transition-delay: 400ms; }
+        .delay-400 { transition-delay: 550ms; }
+        .delay-500 { transition-delay: 700ms; }
+        .delay-600 { transition-delay: 850ms; }
+        .delay-700 { transition-delay: 1000ms; }
+
+        #video-section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        #video-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #f5c07a;
+            text-align: center;
+            opacity: 0;
+            z-index: 10;
+            white-space: nowrap;
+            text-shadow: 0 1px 10px rgba(245, 192, 122, 0.25);
+        }
+        .intro-text.show {
+            animation: smoothRise 6.5s ease forwards;
+        }
+        @keyframes smoothRise {
+            0% { opacity: 0; transform: translate(-50%, -42%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .navbar-logo {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            color: #f5c07a;
+        }
+
+        .wa-btn {
+            font-size: 0.68rem;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.18);
+            white-space: nowrap;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.82)), 
+                              url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT74UI172dwfh8IY51jS8KTC0CkKAoKwJXKTuOsEwFi6Re1E7zTkb86fiA&s=10');
+            background-size: cover;
+            background-position: center 35%;
+        }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.06); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+        .glass-strong { 
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.12); 
+        }
+        nav { 
+            background: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(20px); 
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        #why-us, #manifesto {
+            position: relative;
+            overflow: hidden;
+            padding: 4.5rem 0 5rem;
+            background: #0a0a0a;
+        }
+        #why-us::before, #manifesto::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        #why-us::before {
+            background-image: url('https://weblog.spots.ag/10-2024/McLaren-W1/1.jpg');
+        }
+        #manifesto::before {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiq590Uzb9X7NIvvoXw6pboI_Ur_xIRjdrNgcraIj8Jg&s=10');
+            opacity: 0.40;
+        }
+        #why-us .overlay, #manifesto .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            z-index: 2;
+        }
+        .content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .gallery-container {
+            position: relative;
+            height: 520px;
+            max-width: 920px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        }
+        .gallery-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1300ms ease-in-out;
+        }
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+        }
+
+        .baba-title {
+            position: absolute;
+            bottom: 68px;
+            left: 32px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #ff1a1a;
+            font-weight: 300;
+            text-shadow: 0 0 8px #ff1a1a, 0 0 16px #ff1a1a, 0 0 30px #ff3300;
+            animation: redGlow 2s ease-in-out infinite alternate;
+            z-index: 10;
+        }
+        @keyframes redGlow {
+            from { text-shadow: 0 0 8px #ff1a1a, 0 0 16px #ff1a1a; }
+            to   { text-shadow: 0 0 14px #ff1a1a, 0 0 28px #ff3300, 0 0 50px #ff5500; }
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 38px;
+            left: 32px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #ddd;
+            font-weight: 300;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+            z-index: 10;
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            color: #666;
+            margin-bottom: 2.5rem;
+        }
+        .minimal-text {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: #aaa;
+        }
+        .minimal-text strong {
+            color: #ddd;
+            font-weight: 500;
+        }
+    </style>
+        </head>
+        <body class="bg-zinc-950 text-zinc-200">
+          <!-- NAVBAR -->
+          <nav class="fixed w-full z-50 border-b border-white/10 glass">
+            <div class="max-w-screen-2xl mx-auto px-6">
+              <div class="flex items-center justify-between h-14">
+                <div class="flex items-center gap-x-2">
+                  <div class="w-5 h-5 bg-gradient-to-br from-zinc-300 to-zinc-400 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-car-side text-zinc-900 text-sm">
+                    </i>
+                  </div>
+                  <div class="navbar-logo">AUTO CHOICE</div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-6 text-xs">
+                  <a href="#home" onclick="smoothScrollTo('home'); return false;" class="hover:text-white">Home</a>
+                  <a href="#services" onclick="smoothScrollTo('services'); return false;" class="hover:text-white">Services</a>
+                  <a href="#schedule" onclick="smoothScrollTo('schedule'); return false;" class="hover:text-white">Schedule</a>
+                  <a href="#location" onclick="smoothScrollTo('location'); return false;" class="hover:text-white">Location</a>
+                  <a href="#why-us" onclick="smoothScrollTo('why-us'); return false;" class="hover:text-white">Why Us</a>
+                  <a href="#manifesto" onclick="smoothScrollTo('manifesto'); return false;" class="hover:text-white">Manifesto</a>
+                  <a href="#gallery" onclick="smoothScrollTo('gallery'); return false;" class="hover:text-white">Gallery</a>
+                  <a href="#contact" onclick="smoothScrollTo('contact'); return false;" class="hover:text-white">Contact</a>
+                  <a href="#developer" onclick="smoothScrollTo('developer'); return false;" class="hover:text-white">Developer</a>
+                </div>
+                <div class="flex items-center gap-x-2">
+                  <a href="tel:03129792322" class="hidden sm:flex items-center text-[10px] hover:text-white">
+                    <i class="fa-solid fa-phone mr-1">
+                    </i> 0312-9792322
+                  </a>
+                  <a href="https://wa.me/923159085086" target="_blank" class="wa-btn glass flex items-center gap-x-1 hover:border-white/40">
+                    <i class="fa-brands fa-whatsapp">
+                    </i> WhatsApp
+                  </a>
+                  <button onclick="toggleMobileMenu()" class="md:hidden text-xl text-zinc-300">
+                    <i id="menuIcon" class="fa-solid fa-bars">
+                    </i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden glass-strong border-t border-white/10 px-6 py-4 text-sm">
+              <a href="#home" onclick="toggleMobileMenu(); smoothScrollTo('home'); return false;" class="block py-2">Home</a>
+              <a href="#services" onclick="toggleMobileMenu(); smoothScrollTo('services'); return false;" class="block py-2">Services</a>
+              <a href="#schedule" onclick="toggleMobileMenu(); smoothScrollTo('schedule'); return false;" class="block py-2">Schedule</a>
+              <a href="#location" onclick="toggleMobileMenu(); smoothScrollTo('location'); return false;" class="block py-2">Location</a>
+              <a href="#why-us" onclick="toggleMobileMenu(); smoothScrollTo('why-us'); return false;" class="block py-2">Why Us</a>
+              <a href="#manifesto" onclick="toggleMobileMenu(); smoothScrollTo('manifesto'); return false;" class="block py-2">Manifesto</a>
+              <a href="#gallery" onclick="toggleMobileMenu(); smoothScrollTo('gallery'); return false;" class="block py-2">Gallery</a>
+              <a href="#contact" onclick="toggleMobileMenu(); smoothScrollTo('contact'); return false;" class="block py-2">Contact</a>
+              <a href="#developer" onclick="toggleMobileMenu(); smoothScrollTo('developer'); return false;" class="block py-2">Developer</a>
+            </div>
+          </nav>
+          <!-- VIDEO HERO -->
+          <section id="video-section">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+              <source src="https://videos.pexels.com/video-files/29498822/12698154_2714_1440_24fps.mp4" type="video/mp4">
+              </video>
+              <div id="introText" class="intro-text">AUTO CHOICE BARGAIN</div>
+              <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50">
+              </div>
+            </section>
+            <!-- HERO -->
+            <section id="home" class="hero-bg min-h-screen flex items-center pt-14">
+              <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="max-w-xs">
+                  <p class="text-zinc-400 text-[10px] tracking-widest calm-appear-up delay-100">PESHAWAR • 24 HOURS</p>
+                  <h1 class="mt-4 text-3xl leading-none font-semibold tracking-tighter calm-appear-up delay-200">Premium Car Deals,<br>Anytime.</h1>
+                  <p class="mt-4 text-xs text-zinc-400 calm-appear-up delay-300">Used • Japanese • Trade-in • Inspection</p>
+                  <div class="mt-6 flex gap-2 calm-appear-up delay-400">
+                    <a href="#services" onclick="smoothScrollTo('services'); return false;" class="text-xs py-2 px-5 bg-white text-black rounded-full font-medium">Browse Cars</a>
+                    <a href="tel:03129792322" class="text-xs py-2 px-5 border border-white/30 rounded-full hover:bg-white/10">Call Now</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- TRUST BAR -->
+            <div class="glass py-3 border-b border-white/10">
+              <div class="max-w-screen-2xl mx-auto px-6 flex flex-wrap justify-center gap-x-6 text-[10px] text-zinc-400">
+                <div class="calm-appear-up delay-100">Used Cars</div>
+                <div class="calm-appear-up delay-200">Japanese Imports</div>
+                <div class="calm-appear-up delay-300">Financing</div>
+                <div class="calm-appear-up delay-400">Trade-In</div>
+                <div class="calm-appear-up delay-500">24/7 Inspection</div>
+              </div>
+            </div>
+            <!-- SERVICES -->
+            <section id="services" class="py-16">
+              <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="text-center mb-10">
+                  <h2 class="text-2xl font-semibold calm-appear-up delay-100">Our Services</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-5">
+                  <div class="glass-card rounded-3xl p-6 calm-appear-up delay-100">
+                    <i class="fa-solid fa-car text-2xl mb-4">
+                    </i>
+                    <h3 class="text-base font-medium">Used Cars</h3>
+                    <p class="text-[10px] text-zinc-400 mt-1">Full inspection & transparent history</p>
+                  </div>
+                  <div class="glass-card rounded-3xl p-6 calm-appear-up delay-200">
+                    <i class="fa-solid fa-handshake text-2xl mb-4">
+                    </i>
+                    <h3 class="text-base font-medium">Financing & Trade-In</h3>
+                    <p class="text-[10px] text-zinc-400 mt-1">Flexible plans & fair valuation</p>
+                  </div>
+                  <div class="glass-card rounded-3xl p-6 calm-appear-up delay-300">
+                    <i class="fa-solid fa-shield-halved text-2xl mb-4">
+                    </i>
+                    <h3 class="text-base font-medium">Inspection & Deals</h3>
+                    <p class="text-[10px] text-zinc-400 mt-1">24/7 professional service</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- SCHEDULE -->
+            <section id="schedule" class="relative overflow-hidden py-16">
+              <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="https://cdn.pixabay.com/video/2016/07/28/4053-176749018_large.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-black/70">
+                </div>
+                <div class="relative z-10 max-w-screen-2xl mx-auto px-6">
+                  <div class="text-center mb-12">
+                    <h2 class="font-semibold text-white calm-appear-up delay-100 text-3xl">Business Schedule</h2>
+                    <p class="text-zinc-400 text-sm mt-2 calm-appear-up delay-200">Peshawar • Open 24 Hours Daily</p>
+                  </div>
+                  <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-100">
+                        <div class="text-lg font-medium text-white mb-1">Monday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">24/7 Service Available</div>
+                      </div>
+                      <!-- Similar cards for other days... (kept same as original) -->
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-200">
+                        <div class="text-lg font-medium text-white mb-1">Tuesday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">24/7 Service Available</div>
+                      </div>
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-300">
+                        <div class="text-lg font-medium text-white mb-1">Wednesday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">24/7 Service Available</div>
+                      </div>
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-400">
+                        <div class="text-lg font-medium text-white mb-1">Thursday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">24/7 Service Available</div>
+                      </div>
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-500">
+                        <div class="text-lg font-medium text-white mb-1">Friday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">Jummah Prayer Break (30 min)</div>
+                      </div>
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-600">
+                        <div class="text-lg font-medium text-white mb-1">Saturday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">24/7 Service Available</div>
+                      </div>
+                      <div class="glass-card rounded-3xl p-6 text-center calm-appear-up delay-700 lg:col-span-1 md:col-span-2">
+                        <div class="text-lg font-medium text-white mb-1">Sunday</div>
+                        <div class="text-emerald-400 font-medium">Open 24 Hours</div>
+                        <div class="text-[10px] text-zinc-500 mt-4">Full Service Available</div>
+                      </div>
+                    </div>
+                    <div class="text-center mt-10 text-xs text-zinc-400 calm-appear-up delay-700">
+                      We are available 24 hours a day, 7 days a week.<br>
+                      For urgent matters, feel free to call or WhatsApp anytime.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- LOCATION -->
+              <section id="location" class="relative h-[620px] overflow-hidden">
+                <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                  <source src="https://videos.pexels.com/video-files/5309353/5309353-hd_1920_1080_25fps.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30">
+                  </div>
+                  <div class="relative z-10 h-full flex items-center">
+                    <div class="max-w-screen-2xl mx-auto px-6">
+                      <div class="max-w-xs glass-strong p-6 rounded-3xl">
+                        <h2 class="text-xl font-semibold mb-2 calm-appear-up delay-100">Visit Our Showroom</h2>
+                        <p class="text-sm calm-appear-up delay-200">Sardar Ahmad Jan Colony</p>
+                        <p class="text-zinc-300 text-xs calm-appear-up delay-300">Pull Charsada Road, Peshawar</p>
+                        <div class="mt-5 text-xs">
+                          <p class="text-zinc-400 mb-1 calm-appear-up delay-400">Call Us</p>
+                          <a href="tel:03129792322" class="block hover:text-white calm-appear-up delay-500">0312-9792322</a>
+                          <a href="tel:03339744545" class="block hover:text-white calm-appear-up delay-600">0333-9744545</a>
+                        </div>
+                        <div class="mt-6 flex gap-2">
+                          <!-- Updated WhatsApp -->
+                          <a href="https://wa.me/923159085086" target="_blank" class="px-5 py-2 text-xs border border-white/30 rounded-full calm-appear-up delay-100">WhatsApp</a>
+                          <!-- Map button unlinked (no href) -->
+                          <button onclick="alert('Location: Sardar Ahmad Jan Colony, Pull Charsada Road, Peshawar')"
+                            class="px-5 py-2 text-xs border border-white/30 rounded-full calm-appear-up delay-200">
+                            Locate on Map
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <!-- WHY US & MANIFESTO (unchanged) -->
+                <section id="why-us">
+                  <div class="overlay">
+                  </div>
+                  <div class="content max-w-screen-2xl mx-auto px-6 relative z-10">
+                    <div class="max-w-md mx-auto">
+                      <p class="section-title tracking-widest calm-appear-up delay-100">WHY US</p>
+                      <div class="space-y-10">
+                        <div class="minimal-text calm-appear-up delay-200">We deal in used and Japanese imported vehicles available in Peshawar.</div>
+                        <div class="minimal-text calm-appear-up delay-300">All cars receive a basic mechanical and visual inspection before being offered for sale.</div>
+                        <div class="minimal-text calm-appear-up delay-400">Pricing is displayed clearly. No hidden costs during the process.</div>
+                        <div class="minimal-text calm-appear-up delay-500">Documentation and transfer work is handled according to local requirements.</div>
+                        <div class="minimal-text calm-appear-up delay-600">We operate with fixed hours but remain reachable for urgent matters.</div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section id="manifesto">
+                  <div class="overlay">
+                  </div>
+                  <div class="content max-w-screen-2xl mx-auto px-6 relative z-10">
+                    <div class="max-w-md mx-auto">
+                      <p class="section-title tracking-widest calm-appear-up delay-100">AUTO CHOICE MANIFESTO</p>
+                      <div class="space-y-10">
+                        <div class="minimal-text calm-appear-up delay-200">We buy and sell used cars without exaggeration.</div>
+                        <div class="minimal-text calm-appear-up delay-300">Every vehicle is checked for basic roadworthiness before it leaves the lot.</div>
+                        <div class="minimal-text calm-appear-up delay-400">We state the price clearly and stick to it.</div>
+                        <div class="minimal-text calm-appear-up delay-500">Paperwork is completed as required by law in Peshawar.</div>
+                        <div class="minimal-text calm-appear-up delay-600">We are here to facilitate a transaction, nothing more.</div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <!-- GALLERY (unchanged) -->
+                <section id="gallery" class="py-16 bg-zinc-950">
+                  <div class="max-w-screen-2xl mx-auto px-6">
+                    <div class="gallery-container">
+                      <div class="gallery-slide active">
+                        <img src="https://i.ibb.co/LDJdbqKq/copilot-image-1775828092256.png" alt="Car 1">
+                          <div class="gallery-overlay">
+                          </div>
+                          <div class="baba-title">AUTO CHOICE</div>
+                          <div class="gallery-label">GALLERY</div>
+                        </div>
+                        <div class="gallery-slide">
+                          <img src="https://i.ibb.co/hv5BdrW/image-1775828055922.jpg" alt="Car 2">
+                            <div class="gallery-overlay">
+                            </div>
+                            <div class="baba-title">AUTO CHOICE</div>
+                            <div class="gallery-label">GALLERY</div>
+                          </div>
+                          <div class="gallery-slide">
+                            <img src="https://i.ibb.co/9HRWMrfv/copilot-image-1775828090897.png" alt="Car 3">
+                              <div class="gallery-overlay">
+                              </div>
+                              <div class="baba-title">AUTO CHOICE</div>
+                              <div class="gallery-label">GALLERY</div>
+                            </div>
+                            <div class="gallery-slide">
+                              <img src="https://i.ibb.co/YBr9hDsT/copilot-image-1775828242731.png" alt="Car 4">
+                                <div class="gallery-overlay">
+                                </div>
+                                <div class="baba-title">AUTO CHOICE</div>
+                                <div class="gallery-label">GALLERY</div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <!-- CONTACT -->
+                        <section id="contact" class="py-16">
+                          <div class="max-w-screen-2xl mx-auto px-6">
+                            <div class="max-w-md mx-auto text-center">
+                              <p class="section-title tracking-widest">CONTACT</p>
+                              <div class="space-y-8">
+                                <div>
+                                  <div class="text-[10px] text-zinc-500 mb-1">SHOWROOM</div>
+                                  <div class="minimal-text">Sardar Ahmad Jan Colony<br>Pull Charsada Road<br>Peshawar</div>
+                                </div>
+                                <div>
+                                  <div class="text-[10px] text-zinc-500 mb-1">PHONE</div>
+                                  <div class="space-y-1">
+                                    <a href="tel:03129792322" class="minimal-text block hover:text-white">0312-9792322</a>
+                                    <a href="tel:03339744545" class="minimal-text block hover:text-white">0333-9744545</a>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div class="text-[10px] text-zinc-500 mb-1">WHATSAPP</div>
+                                  <!-- Updated WhatsApp -->
+                                  <a href="https://wa.me/923159085086" target="_blank" class="minimal-text block hover:text-white">+92 315 9085086</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <!-- DEVELOPER -->
+                        <section id="developer" class="py-20 border-t border-white/10 bg-black">
+                          <div class="max-w-screen-2xl mx-auto px-6">
+                            <div class="max-w-md mx-auto text-center">
+                              <p class="section-title tracking-widest mb-10">DEVELOPER</p>
+                              <a href="https://www.instagram.com/drfahrenheit_" target="_blank" class="group inline-flex flex-col items-center gap-4 hover:opacity-90 transition-all">
+                                <div class="w-16 h-16 bg-zinc-950 border border-zinc-700 rounded-3xl flex items-center justify-center group-hover:border-pink-500/40 transition-colors">
+                                  <i class="fa-brands fa-instagram text-5xl text-white group-hover:text-pink-400 transition-colors">
+                                  </i>
+                                </div>
+                                <div>
+                                  <div class="text-lg font-medium text-white tracking-wide">Dr. Fahrenheit</div>
+                                  <div class="text-xs text-zinc-500">CEO • Fahrensites</div>
+                                </div>
+                              </a>
+                              <div class="mt-12 text-[10px] text-zinc-500 leading-relaxed">
+                                Developed by Fahrensites<br>
+                                We craft in honor, you own the launch.
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <footer class="glass py-6 border-t border-white/10">
+                          <div class="max-w-screen-2xl mx-auto px-6 text-center text-[10px] text-zinc-500">
+                            © 2026 AUTO CHOICE Motor Bargain • Peshawar, Pakistan
+                          </div>
+                        </footer>
+                        <script>
+        window.addEventListener('load', () => {
+            const introText = document.getElementById('introText');
+            setTimeout(() => introText.classList.add('show'), 800);
+        });
+
+        function smoothScrollTo(id) {
+            const element = document.getElementById(id);
+            if (!element) return;
+            const offset = element.getBoundingClientRect().top + window.scrollY - 70;
+            window.scrollTo({ top: offset, behavior: "smooth" });
+
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!mobileMenu.classList.contains('hidden')) toggleMobileMenu();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        // Gallery Auto Slide
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        function changeSlide() {
+            slides.forEach(s => s.classList.remove('active'));
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(changeSlide, 3800);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.calm-appear-up').forEach(el => observer.observe(el));
+    </script>
+                      </body>
+                    </html>
